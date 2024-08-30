@@ -27,7 +27,7 @@ io.on("connection", (socket) => {
   });
 });
 
-const port = 3000 || process.env.DAWOOD_CHAT_PORT;
+const port = process.env.DAWOODS_CHAT_PORT || 3000;
 
 server.listen(port, () => {
   console.log(`listening on *:${port}`);
