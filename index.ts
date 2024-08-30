@@ -16,12 +16,13 @@ io.on("connection", (socket) => {
     console.log(`User logged on: ${username} (${socket.id})`);
   });
 
-  socket.once("message", (message) => {
+  socket.on("message", (message) => {
     io.emit("message", { message, username });
     console.log(`Message sent by ${username} (${socket.id}): ${message}`);
   });
 
-  socket.on("disconnect", () => {
+  socket.once("disconnect", () => {
+    io.emit("log", `${username} left the chat.`);
     console.log(`${username} (${socket.id}) disconnected`);
   });
 });
