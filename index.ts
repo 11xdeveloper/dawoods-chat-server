@@ -12,6 +12,7 @@ io.on("connection", (socket) => {
 
   socket.once("username", (name) => {
     username = name;
+    io.emit("log", `${username} joined the chat!`);
     console.log(`User logged on: ${username} (${socket.id})`);
   });
 
